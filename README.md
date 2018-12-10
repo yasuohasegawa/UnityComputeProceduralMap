@@ -1,5 +1,5 @@
 # UnityComputeProceduralMap
-It's just one of my compute shader demo. It results that it only 19 SetPass calls and 25 batches to make this demo.<br>
+It's just one of my compute shader demo. It results that it takes only 19 SetPass calls and 25 batches to make this demo.<br>
 
 ![Screenshot](screen.png)
 
