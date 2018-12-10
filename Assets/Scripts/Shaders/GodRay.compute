@@ -1,0 +1,33 @@
+﻿#pragma kernel CSMain
+#define THREAD_BLOCK_SIZE 16
+#include "NoiseUtils.cginc"
+
+RWStructuredBuffer<float3> PositionBuffer;
+RWStructuredBuffer<float> AlphaBuffer;
+RWStructuredBuffer<float4x4> RotationMatrixBuffer;
+
+float _Time;
+
+float4x4 matRotateZ(float rad)
+{
+    return float4x4(cos(rad), -sin(rad), 0, 0,
+					sin(rad), cos(rad), 0, 0,
+					0, 0, 1, 0,
+					0, 0, 0, 1);
+}
+
+[numthreads(THREAD_BLOCK_SIZE, 1, 1)]
+void CSMain(uint id : SV_DispatchThreadID)
+{
+    int size = 10;
+    float time = _Time * 0.05;
+    float3 pos = PositionBuffer[id];
+    float alpha = AlphaBuffer[id];
+    pos.y = 5.0 - (id * 0.05);
+    PositionBuffer[id] = pos;
+    AlphaBuffer[id] = abs(sin(time*id*0.5));
+
+    float4x4 rmat = RotationMatrixBuffer[id];
+    float4x4 rotZ = matRotateZ(5.0 * degToRad);
+    RotationMatrixBuffer[id] = rotZ;
+}

@@ -1,0 +1,38 @@
+﻿#pragma kernel CSMain
+#define THREAD_BLOCK_SIZE 16
+#include "NoiseUtils.cginc"
+
+RWStructuredBuffer<float3> PositionBuffer;
+float _Time;
+
+[numthreads(THREAD_BLOCK_SIZE, 1, 1)]
+void CSMain(uint id : SV_DispatchThreadID)
+{
+    int size = 150;
+    float time = _Time * 0.1;
+    float2 uv = float2((float) (id % size) / (float) size, (float) (id / size) / (float) size);
+    float2 uv2 = uv;
+    uv.y += time;
+
+    float dim = 12.0;
+    float n = perlin(uv, dim, time);
+
+    float2 resolution = float2(1.0, 1.0);
+    float2 p = (uv2 * 2.0 - resolution) / min(resolution.x, resolution.y);
+    p.y = 0;
+    float l = length(p) * 3.5;
+    float lSize = 1.2;
+    float4 c = n - (float4(lSize, lSize, lSize, 1.0) - float4(l, l, l, 1.0));
+    
+    float3 pos = PositionBuffer[id];    
+    if (c.y > 0.000000000001)
+    {
+        pos.y = c.y * 0.45;
+    }
+    else
+    {
+        pos.y = c.y * 0.1;
+    }
+
+    PositionBuffer[id] = pos;
+}

@@ -1,0 +1,14 @@
+﻿#pragma kernel CSMain
+#define THREAD_BLOCK_SIZE 16
+#define M_PI 3.14159265358979323846
+
+RWStructuredBuffer<float3> PositionBuffer;
+
+float _Time;
+
+[numthreads(THREAD_BLOCK_SIZE, 1, 1)]
+void CSMain(uint id : SV_DispatchThreadID)
+{
+    float3 pos = PositionBuffer[id];
+    PositionBuffer[id] = pos;
+}
