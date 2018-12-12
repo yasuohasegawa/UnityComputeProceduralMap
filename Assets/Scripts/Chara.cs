@@ -63,7 +63,7 @@ public class Chara : BaseCompute
         SetUp(numeberOfMeshes);
     }
 
-    void Update()
+    public void ForceUpdate()
     {
         for (int i = 0; i < boneMatrices.Length; i++)
         {

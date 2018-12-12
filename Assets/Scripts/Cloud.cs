@@ -48,7 +48,7 @@ public class Cloud : BaseCompute
         SetUp(numeberOfQuads);
     }
 
-    void Update()
+    public void ForceUpdate()
     {
         int kernelId = computeShader.FindKernel("CSMain");
         computeShader.SetBuffer(kernelId, "PositionBuffer", positionBuffer);

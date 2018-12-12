@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 495668202}
   - component: {fileID: 495668203}
   - component: {fileID: 495668204}
+  - component: {fileID: 495668205}
   m_Layer: 0
   m_Name: app
   m_TagString: Untagged
@@ -286,6 +287,22 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 2100000, guid: ade7990e499b6954a9ae848df12e0149, type: 2}
   computeShader: {fileID: 7200000, guid: 7af6f309fca4d4e4cb6cdf1f8e4efacc, type: 3}
+--- !u!114 &495668205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 495668199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feeaaf75256baa64ebb7e2713ecf76ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  road: {fileID: 495668201}
+  chara: {fileID: 461840812}
+  particle: {fileID: 495668204}
+  godray: {fileID: 495668203}
+  cloud: {fileID: 495668202}
 --- !u!1 &1137301457
 GameObject:
   m_ObjectHideFlags: 0
