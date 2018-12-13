@@ -303,6 +303,7 @@ MonoBehaviour:
   particle: {fileID: 495668204}
   godray: {fileID: 495668203}
   cloud: {fileID: 495668202}
+  cameraCtl: {fileID: 1137301462}
 --- !u!1 &1137301457
 GameObject:
   m_ObjectHideFlags: 0

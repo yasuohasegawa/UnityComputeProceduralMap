@@ -18,6 +18,9 @@ public class App : MonoBehaviour {
     [SerializeField]
     private Cloud cloud;
 
+    [SerializeField]
+    private CameraController cameraCtl;
+
     // Use this for initialization
     void Start () {
 		
@@ -25,10 +28,11 @@ public class App : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (road != null)     road.ForceUpdate();
-        if (chara != null)    chara.ForceUpdate();
-        if (particle != null) particle.ForceUpdate();
-        if (godray != null)   godray.ForceUpdate();
-        if (cloud != null)    cloud.ForceUpdate();
+        if (road != null)      road.ForceUpdate();
+        if (chara != null)     chara.ForceUpdate();
+        if (particle != null)  particle.ForceUpdate();
+        if (godray != null)    godray.ForceUpdate();
+        if (cloud != null)     cloud.ForceUpdate();
+        if (cameraCtl != null) cameraCtl.ForceUpdate();
     }
 }
